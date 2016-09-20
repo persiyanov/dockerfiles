@@ -2,13 +2,17 @@ FROM continuumio/anaconda
 
 MAINTAINER Dmitry Persiyanov <dmitry.persiyanov@gmail.com>
 
+RUN sed -i "s/httpredir.debian.org/`curl -s -D - http://httpredir.debian.org/demo/debian/ | awk '/^Link:/ { print $2 }' | sed -e 's@<http://\(.*\)/debian/>;@\1@g'`/" /etc/apt/sources.list
+
 # Install build-essential, cmake and other dependencies
 RUN apt-get clean && apt-get update && apt-get install -y \
   build-essential \
   cmake \
   libopenblas-dev \
   zlib1g-dev \
-  libjpeg-dev
+  libjpeg-dev \
+  libboost-all-dev \
+  libsdl2-dev
 
 RUN apt-get install -y \
     xvfb libav-tools xorg-dev python-opengl swig
