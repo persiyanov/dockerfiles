@@ -23,9 +23,10 @@ RUN pip install --upgrade --no-deps git+git://github.com/Theano/Theano.git
 RUN pip install --upgrade https://github.com/Lasagne/Lasagne/archive/master.zip
 
 # Install AgentNet
-RUN git clone https://github.com/justheuristic/AgentNet ~/AgentNet \
+RUN git clone https://github.com/yandexdataschool/AgentNet.git ~/AgentNet \
     && cd ~/AgentNet \
-    && python setup.py install
+    && pip install -r requirements.txt \
+    && pip install -e .
 
 # Install OpenAI Gym
 RUN git clone https://github.com/openai/gym ~/gym \
