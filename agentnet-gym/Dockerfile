@@ -17,6 +17,8 @@ RUN apt-get clean && apt-get update && apt-get install -y \
 RUN apt-get install -y \
     xvfb libav-tools xorg-dev python-opengl swig
 
+RUN pip install --upgrade pip
+
 # Install bleeding-edge Theano
 RUN pip install --upgrade --no-deps git+git://github.com/Theano/Theano.git
 
@@ -32,6 +34,9 @@ RUN git clone https://github.com/yandexdataschool/AgentNet.git ~/AgentNet \
 RUN git clone https://github.com/openai/gym ~/gym \
     && cd ~/gym \
     && pip install -e .[all]
+RUN pip install --upgrade gym
 
+# Some fancy packages
+RUN pip install tqdm seaborn
 
 WORKDIR /root
