@@ -29,3 +29,5 @@ RUN pip install cython \
                 pyzmq \
                 tornado \
                 jsonschema
+
+RUN pip install --no-use-wheel scikit-image
