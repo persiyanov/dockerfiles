@@ -14,8 +14,8 @@ RUN apt-get clean && apt-get update && apt-get install -y \
   libxft-dev \
   python-zmq
 
-
-
+RUN sudo rm -rf /usr/lib/python2.7/dist-packages/six-*
+RUN pip install six
 
 RUN pip install cython \
                 numpy \
